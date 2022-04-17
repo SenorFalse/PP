@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="Elis" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ArticlesElis" EntityType="Model.ArticlesElis" />
+    <EntitySet Name="DescrElis" EntityType="Model.DescrElis" />
+    <AssociationSet Name="FK_ArticlesElis_DescrElis" Association="Model.FK_ArticlesElis_DescrElis">
+      <End Role="DescrElis" EntitySet="DescrElis" />
+      <End Role="ArticlesElis" EntitySet="ArticlesElis" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="ArticlesElis">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Image" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="DescrElis" Relationship="Model.FK_ArticlesElis_DescrElis" FromRole="ArticlesElis" ToRole="DescrElis" />
+  </EntityType>
+  <EntityType Name="DescrElis">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ArticlesElis" Relationship="Model.FK_ArticlesElis_DescrElis" FromRole="DescrElis" ToRole="ArticlesElis" />
+  </EntityType>
+  <Association Name="FK_ArticlesElis_DescrElis">
+    <End Type="Model.DescrElis" Role="DescrElis" Multiplicity="1" />
+    <End Type="Model.ArticlesElis" Role="ArticlesElis" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="DescrElis">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ArticlesElis">
+        <PropertyRef Name="ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

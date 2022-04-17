@@ -1,0 +1,19 @@
+﻿<Application x:Class="Зачёт.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:Зачёт"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+   
+        <Style TargetType="{x:Type TextBlock}">
+            <Setter Property="FontFamily" Value="Comic Sans MS" />
+        </Style>
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="FontFamily" Value="Comic Sans MS" />
+            <Setter Property="Background" Value="#04A0FF"></Setter>
+            <Setter Property="BorderBrush" Value="White"></Setter>
+            <Setter Property="Foreground" Value="White"></Setter>
+        </Style>
+ 
+    </Application.Resources>
+</Application>
